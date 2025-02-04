@@ -31,25 +31,55 @@ const Dashboard = () => {
         fetchVisits();
     }, []);
 
+    // Calculate open and closed counts for follow-ups and visits   
+    const today = new Date();
+    const openFollowUps = followUps.filter(f => f.Status === 'Open').length;
+    const closedFollowUps = followUps.filter(f => f.Status === 'Closed').length;
+    const recommendedFollowups = followUps.filter(f => new Date(f.ScheduledDate) <= today).length;
+    const totalFollowUps = followUps.length;
+
+    const openVisits = visits.filter(v => v.Status === 'Open').length;
+    const closedVisits = visits.filter(v => v.Status === 'Closed').length;
+    const totalVisits = visits.length;
+    // console.log(recommendedFollowups);
+    
     return (
         <div style={{ padding: '20px' }}>
             <h1>Dashboard</h1>
+
+            {/* Follow-ups Group */}
+            <div className={styles.cardsContainer}>
+            <div className={styles.card}>
+                    <p>{recommendedFollowups}</p>
+                    <h2>Recommended Follow-ups</h2>
+                </div>
+                <div className={styles.card}>
+                    <p>{openFollowUps}</p>
+                    <h2>Open Follow-ups</h2>
+                </div>
+                <div className={styles.card}>
+                    <p>{closedFollowUps}</p>
+                    <h2>Closed Follow-ups</h2>
+                </div>
+                <div className={styles.card}>
+                    <p>{totalFollowUps}</p>
+                    <h2>Total Follow-ups</h2>
+                </div>
+            </div>
+
+            {/* Visits Group */}
             <div className={styles.cardsContainer}>
                 <div className={styles.card}>
-                    <p> {followUps.length} </p>
-                    <h2>Follow-ups</h2>
+                    <p>{openVisits}</p>
+                    <h2>Open Visits</h2>
                 </div>
                 <div className={styles.card}>
-                    <p> {visits.length} </p>
-                    <h2>Visits</h2>
+                    <p>{closedVisits}</p>
+                    <h2>Closed Visits</h2>
                 </div>
                 <div className={styles.card}>
-                    <p> {visits.length} </p>
-                    <h2>Visits</h2>
-                </div>
-                <div className={styles.card}>
-                    <p> {visits.length} </p>
-                    <h2>Visits</h2>
+                    <p>{totalVisits}</p>
+                    <h2>Total Visits</h2>
                 </div>
             </div>
             
