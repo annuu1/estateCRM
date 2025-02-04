@@ -1,35 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "../assets/css/dashboard.module.css";
 import tableStyles from "../assets/css/table.module.css";
+import { DataContext } from "../context/DataContext";
 
 const Dashboard = () => {
-    const [followUps, setFollowUps] = useState([]);
-    const [visits, setVisits] = useState([]);
-
-    useEffect(() => {
-        const fetchFollowUps = async () => {
-            try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbz_ttqSToHOVk0Y8c1WVE1YkOA63YLHaRrS-YI_vklE7OpUiCNssHrN65TYSoEFEZ_Ujw/exec?action=getFollowups');
-                const data = await response.json();
-                setFollowUps(data);
-            } catch (error) {
-                console.error('Error fetching follow-ups:', error);
-            }
-        };
-
-        const fetchVisits = async () => {
-            try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbz_ttqSToHOVk0Y8c1WVE1YkOA63YLHaRrS-YI_vklE7OpUiCNssHrN65TYSoEFEZ_Ujw/exec?action=getVisits');
-                const data = await response.json();
-                setVisits(data);
-            } catch (error) {
-                console.error('Error fetching visits:', error);
-            }
-        };
-
-        fetchFollowUps();
-        fetchVisits();
-    }, []);
+    const { followUps, visits } = React.useContext(DataContext);
 
     // Calculate open and closed counts for follow-ups and visits   
     const today = new Date();

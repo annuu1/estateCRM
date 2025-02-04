@@ -2,22 +2,11 @@ import React, {useState, useEffect} from 'react'
 import tableStyles from "../assets/css/table.module.css";
 import { NavLink } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { useContext } from 'react';
+import { DataContext } from '../context/DataContext';
 
 export default function Visits() {
-    const [visits, setVisits] = useState([])
-
-    useEffect(() => {
-        const fetchVisits = async () => {
-          try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbz_ttqSToHOVk0Y8c1WVE1YkOA63YLHaRrS-YI_vklE7OpUiCNssHrN65TYSoEFEZ_Ujw/exec?action=getVisits');
-            const data = await response.json();
-            setVisits(data);
-          } catch (error) {
-            console.error('Error fetching follow-ups:', error);
-          }
-        };
-        fetchVisits();
-      }, []);
+    const {visits} = useContext(DataContext)
 
   return (
     <div >
