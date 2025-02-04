@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from '../assets/css/form.module.css';
 
 const FollowUpForm = () => {
   const [formData, setFormData] = useState({
@@ -31,22 +32,14 @@ const FollowUpForm = () => {
     setMessage('');
 
     try {
+      const params = new URLSearchParams(formData).toString();
         const response = await fetch(
-            `https://cors-anywhere.herokuapp.com/${encodeURIComponent(
-              'https://script.google.com/macros/s/AKfycbz_ttqSToHOVk0Y8c1WVE1YkOA63YLHaRrS-YI_vklE7OpUiCNssHrN65TYSoEFEZ_Ujw/exec?action=createFollowup'
-            )}`,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(formData)
-            }
+            `https://script.google.com/macros/s/AKfycbzQM23rERF5TSnEO4eYaOxWhEUQkxArrI0HXiBdRSBTALvArkFVsWlhzAdCWdJIh-zimw/exec?action=createFollowup&${params}`,
           );
 
-      const result = await response.json();
+      const result = await response.json();            
       
-      if (result.result === 'success') {
+      if (result.id) {
         setMessage('Follow-up created successfully!');
         setFormData({
           clientName: '',
@@ -72,7 +65,7 @@ const FollowUpForm = () => {
   return (
     <div className="form-container">
       <h2>Create New Follow-up</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} action='get'>
         <div className="form-group">
           <label>
             Client Name*:
@@ -209,63 +202,7 @@ const FollowUpForm = () => {
         )}
       </form>
 
-      <style jsx>{`
-        .form-container {
-          max-width: 600px;
-          margin: 20px auto;
-          padding: 20px;
-          border: 1px solid #ddd;
-          border-radius: 8px;
-        }
 
-        .form-group {
-          margin-bottom: 15px;
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-        }
-
-        label {
-          font-weight: bold;
-        }
-
-        input, textarea, select {
-          padding: 8px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          width: 100%;
-        }
-
-        button {
-          background-color: #4CAF50;
-          color: white;
-          padding: 10px 20px;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
-          margin-top: 10px;
-        }
-
-        button:hover {
-          background-color: #45a049;
-        }
-
-        .message {
-          margin-top: 15px;
-          padding: 10px;
-          border-radius: 4px;
-        }
-
-        .success {
-          background-color: #dff0d8;
-          color: #3c763d;
-        }
-
-        .error {
-          background-color: #f2dede;
-          color: #a94442;
-        }
-      `}</style>
     </div>
   );
 };
