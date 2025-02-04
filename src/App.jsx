@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import FollowUps from './pages/FollowUps';
 import Visits from './pages/Visits';
 import FollowUpForm from './components/FollowUpForm';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
     <BrowserRouter>
     <Navbar />
       <Routes>
-        <Route path='/' element= { <h1>I am home</h1> } />
+        <Route path='/' element= { <Dashboard /> } />
         <Route path='followups' element={ <FollowUps /> } ></Route>
         <Route path='visits' element={ <Visits /> } ></Route>
         <Route path='addFollowup' element={ <FollowUpForm /> } ></Route>
