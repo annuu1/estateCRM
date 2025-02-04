@@ -1,0 +1,42 @@
+/* Table Styles */
+table {
+    width: 100%; /* Full width */
+    border-collapse: collapse; /* Merge borders */
+    margin: 20px 0; /* Margin around the table */
+    font-family: Arial, sans-serif; /* Font style */
+}
+
+/* Table Header Styles */
+th {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 12px; /* Padding inside header cells */
+    text-align: left; /* Align text to the left */
+}
+
+/* Table Data Cell Styles */
+td {
+    border: 1px solid #ddd; /* Light gray border */
+    padding: 8px; /* Padding inside data cells */
+}
+
+/* Row Hover Effect */
+tr:hover {
+    background-color: #f1f1f1; /* Light gray background on hover */
+}
+
+/* Alternate Row Colors */
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+/* Responsive Table */
+@media screen and (max-width: 600px) {
+    table {
+        width: 100%; /* Full width on small screens */
+    }
+    /* th, td { */
+        /* display: block; Stack cells vertically */
+        /* width: 100%; Full width for each cell */
+    /* } */
+}

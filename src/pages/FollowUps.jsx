@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import tableStyles from "../assets/css/table.module.css";
 
 export default function FollowUps() {
     const [followUps, setFollowUps] = useState([])
@@ -17,24 +18,24 @@ export default function FollowUps() {
       }, []);
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div >
       <h1>Follow Ups</h1>
-      <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+      <table >
         <thead>
-          <tr style={{ backgroundColor: '#f2f2f2' }}>
-            <th style={{ padding: '12px', border: '1px solid #ddd' }}>ID</th>
-            <th style={{ padding: '12px', border: '1px solid #ddd' }}>Client Name</th>
-            <th style={{ padding: '12px', border: '1px solid #ddd' }}>Phone</th>
-            <th style={{ padding: '12px', border: '1px solid #ddd' }}>Interested In</th>
+          <tr >
+            <th>ID</th>
+            <th>Client Name</th>
+            <th>Phone</th>
+            <th>Interested In</th>
           </tr>
         </thead>
         <tbody>
           {followUps.map(followUp => (
-            <tr key={followUp.ID} style={{ border: '1px solid #ddd' }}>
-              <td style={{ padding: '12px', border: '1px solid #ddd' }}>{followUp.ID}</td>
-              <td style={{ padding: '12px', border: '1px solid #ddd' }}>{followUp.ClientName}</td>
-              <td style={{ padding: '12px', border: '1px solid #ddd' }}>{followUp.Phone}</td>
-              <td style={{ padding: '12px', border: '1px solid #ddd' }}>{followUp.InterestedIn}</td>
+            <tr key={followUp.ID} >
+              <td>{followUp.ID}</td>
+              <td>{followUp.ClientName}</td>
+              <td>{followUp.Phone}</td>
+              <td>{followUp.InterestedIn}</td>
             </tr>
           ))}
         </tbody>

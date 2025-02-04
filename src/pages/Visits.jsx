@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import tableStyles from "../assets/css/table.module.css";
 
 export default function Visits() {
     const [visits, setVisits] = useState([])
@@ -17,24 +18,24 @@ export default function Visits() {
       }, []);
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div >
       <h1>Visits</h1>
-      <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+      <table >
         <thead>
-          <tr style={{ backgroundColor: '#f2f2f2' }}>
-            <th style={{ padding: '12px', border: '1px solid #ddd' }}>ID</th>
-            <th style={{ padding: '12px', border: '1px solid #ddd' }}>Client Name</th>
-            <th style={{ padding: '12px', border: '1px solid #ddd' }}>Phone</th>
-            <th style={{ padding: '12px', border: '1px solid #ddd' }}>Interested In</th>
+          <tr >
+            <th>ID</th>
+            <th>Client Name</th>
+            <th>Phone</th>
+            <th>Interested In</th>
           </tr>
         </thead>
         <tbody>
           {visits.map(visit => (
-            <tr key={visit.ID} style={{ border: '1px solid #ddd' }}>
-              <td style={{ padding: '12px', border: '1px solid #ddd' }}>{visit.ID}</td>
-              <td style={{ padding: '12px', border: '1px solid #ddd' }}>{visit.ClientName}</td>
-              <td style={{ padding: '12px', border: '1px solid #ddd' }}>{visit.Phone}</td>
-              <td style={{ padding: '12px', border: '1px solid #ddd' }}>{visit.InterestedIn}</td>
+            <tr key={visit.ID} >
+              <td>{visit.ID}</td>
+              <td>{visit.ClientName}</td>
+              <td>{visit.Phone}</td>
+              <td>{visit.InterestedIn}</td>
             </tr>
           ))}
         </tbody>
