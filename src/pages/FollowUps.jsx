@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
+import { NavLink } from 'react-router-dom';
 import tableStyles from "../assets/css/table.module.css";
+import { Outlet } from 'react-router-dom';
 
 export default function FollowUps() {
     const [followUps, setFollowUps] = useState([])
@@ -19,7 +21,9 @@ export default function FollowUps() {
 
   return (
     <div >
-      <h1>Follow Ups</h1>
+      <Outlet></Outlet>
+      <h1>Follow Ups </h1>
+      <NavLink to={'/followups/add'} className={tableStyles.addBtn }>+</NavLink>
       <table >
         <thead>
           <tr >

@@ -15,9 +15,11 @@ function App() {
     <Navbar />
       <Routes>
         <Route path='/' element= { <Dashboard /> } />
-        <Route path='followups' element={ <FollowUps /> } ></Route>
-        <Route path='visits' element={ <Visits /> } ></Route>
-        <Route path='addFollowup' element={ <FollowUpForm /> } ></Route>
+        <Route path='/followups' element={ <FollowUps /> } >
+              <Route path='add' element={ <FollowUpForm /> }></Route>
+        </Route>
+        <Route path='/visits' element={ <Visits /> } ></Route>
+        <Route path='/addFollowup' element={ <FollowUpForm /> } ></Route>
       </Routes>
     </BrowserRouter>
     </div>

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import tableStyles from "../assets/css/table.module.css";
+import { NavLink } from 'react-router-dom';
 
 export default function Visits() {
     const [visits, setVisits] = useState([])
@@ -20,9 +21,10 @@ export default function Visits() {
   return (
     <div >
       <h1>Visits</h1>
+      <NavLink to={'/visits/addVisit'} className={tableStyles.addBtn}>+</NavLink>
       <table >
         <thead>
-          <tr >
+          <tr>
             <th>ID</th>
             <th>Client Name</th>
             <th>Phone</th>
@@ -43,3 +45,4 @@ export default function Visits() {
     </div>
   )
 }
+
