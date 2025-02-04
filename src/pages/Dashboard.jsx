@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../assets/css/dashboard.module.css";
 import tableStyles from "../assets/css/table.module.css";
 import { DataContext } from "../context/DataContext";
+import DataTable from "../components/DataTable"; // Importing the new DataTable component
 
 const Dashboard = () => {
     const { followUps, visits } = React.useContext(DataContext);
@@ -17,8 +18,7 @@ const Dashboard = () => {
     const closedVisits = visits.filter(v => v.Status === 'Closed').length;
     const totalVisits = visits.length;
     const recommendedVisits = visits.filter(f => new Date(f.ScheduledDate) <= today).length;
-    // console.log(recommendedFollowups);
-    
+
     return (
         <div style={{ padding: '20px' }}>
             <h1>Dashboard</h1>
@@ -26,7 +26,7 @@ const Dashboard = () => {
             {/* Follow-ups Group */}
             <div><h3>Follow-Ups</h3></div>
             <div className={styles.cardsContainer}>
-            <div className={styles.card}>
+                <div className={styles.card}>
                     <p>{recommendedFollowups}</p>
                     <h2>Recommended</h2>
                 </div>
@@ -66,44 +66,20 @@ const Dashboard = () => {
             </div>
             
             <h2>Follow Ups</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Client Name</th>
-                        <th>Phone</th>
-                        <th>Interested In</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {followUps.slice(-5).map(followUp => (
-                        <tr key={followUp.ID}>
-                            <td>{followUp.ClientName}</td>
-                            <td>{followUp.Phone}</td>
-                            <td>{followUp.InterestedIn}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+<DataTable 
+    headers={['Client Name', 'Phone', 'Interested In']} 
+    keys={['ClientName', 'Phone', 'InterestedIn']} 
+    data={followUps.slice(-5)} 
+/>
+
 
             <h2>Visits</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Client Name</th>
-                        <th>Phone</th>
-                        <th>Interested In</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {visits.slice(-5).map(visit => (
-                        <tr key={visit.ID}>
-                            <td>{visit.ClientName}</td>
-                            <td>{visit.Phone}</td>
-                            <td>{visit.InterestedIn}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+<DataTable 
+    headers={['Client Name', 'Phone', 'Interested In']} 
+    keys={['ClientName', 'Phone', 'InterestedIn']} 
+    data={visits.slice(-5)} 
+/>
+
         </div>
     );
 };
