@@ -20,9 +20,9 @@ function App() {
               <Route path='add' element={ <FollowUpForm /> }></Route>
         </Route>
         <Route path='/visits' element={ <Visits /> } >
-              <Route path='add' element={ <FollowUpForm /> }></Route>
+              <Route path='add' element={ <VisitForm /> }></Route>
         </Route>
-        <Route path='/addFollowup' element={ <VisitForm /> } ></Route>
+        <Route path='/addVisit' element={ <VisitForm /> } ></Route>
       </Routes>
     </BrowserRouter>
     </div>

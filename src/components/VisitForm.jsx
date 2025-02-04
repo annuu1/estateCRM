@@ -64,7 +64,7 @@ const FollowUpForm = () => {
 
   return (
     <div className="form-container">
-      <h2>Create New Follow-up</h2>
+      <h2>Create New Visit</h2>
       <form onSubmit={handleSubmit} action='get'>
         <div className="form-group">
           <label>

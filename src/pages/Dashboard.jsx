@@ -41,6 +41,7 @@ const Dashboard = () => {
     const openVisits = visits.filter(v => v.Status === 'Open').length;
     const closedVisits = visits.filter(v => v.Status === 'Closed').length;
     const totalVisits = visits.length;
+    const recommendedVisits = visits.filter(f => new Date(f.ScheduledDate) <= today).length;
     // console.log(recommendedFollowups);
     
     return (
@@ -69,6 +70,10 @@ const Dashboard = () => {
 
             {/* Visits Group */}
             <div className={styles.cardsContainer}>
+                <div className={styles.card}>
+                    <p>{recommendedVisits}</p>
+                    <h2>Recommended Visits</h2>
+                </div>
                 <div className={styles.card}>
                     <p>{openVisits}</p>
                     <h2>Open Visits</h2>
