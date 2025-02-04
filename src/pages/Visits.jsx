@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import tableStyles from "../assets/css/table.module.css";
 import { NavLink } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 export default function Visits() {
     const [visits, setVisits] = useState([])
@@ -20,8 +21,9 @@ export default function Visits() {
 
   return (
     <div >
+      <Outlet/>
       <h1>Visits</h1>
-      <NavLink to={'/visits/addVisit'} className={tableStyles.addBtn}>+</NavLink>
+      <NavLink to={'/visits/add'} className={tableStyles.addBtn}>+</NavLink>
       <table >
         <thead>
           <tr>
