@@ -2,6 +2,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 10px;
+    position: fixed;
+    top: 0px;
 }
 ul{
     list-style: none;
@@ -23,3 +28,13 @@ ul{
   .logo{
     width: auto;
   }
+  @media (max-width: 600px) {
+    ul {
+        gap: 5px;
+    }
+
+    ul a {
+        padding: 8px 15px; /* Adjust padding for smaller screens */
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+}

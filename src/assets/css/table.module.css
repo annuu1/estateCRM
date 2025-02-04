@@ -1,9 +1,15 @@
+/* Table Container */
+.table .container {
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
+}
+
 /* Table Styles */
 table {
     width: 100%; /* Full width */
     border-collapse: collapse; /* Merge borders */
     margin: 20px 0; /* Margin around the table */
     font-family: Arial, sans-serif; /* Font style */
+    table-layout: auto; /* Adjust layout for responsiveness */
 }
 
 /* Table Header Styles */
@@ -34,9 +40,12 @@ tr:nth-child(even) {
 @media screen and (max-width: 600px) {
     table {
         width: 100%; /* Full width on small screens */
+        display: block; /* Make table block for better responsiveness */
+        overflow-x: auto; /* Allow horizontal scrolling */
+        white-space: nowrap; /* Prevent text from wrapping */
     }
-    /* th, td { */
+    th, td {
         /* display: block; Stack cells vertically */
-        /* width: 100%; Full width for each cell */
-    /* } */
+        width: 100%; /* Full width for each cell */
+    }
 }
