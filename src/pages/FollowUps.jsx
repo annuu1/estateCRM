@@ -15,7 +15,6 @@ export default function FollowUps() {
       <table >
         <thead>
           <tr >
-            <th>ID</th>
             <th>Client Name</th>
             <th>Phone</th>
             <th>Interested In</th>
@@ -24,7 +23,6 @@ export default function FollowUps() {
         <tbody>
           {followUps.map(followUp => (
             <tr key={followUp.ID} >
-              <td>{followUp.ID}</td>
               <td>{followUp.ClientName}</td>
               <td>{followUp.Phone}</td>
               <td>{followUp.InterestedIn}</td>

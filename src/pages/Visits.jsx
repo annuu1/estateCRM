@@ -16,7 +16,6 @@ export default function Visits() {
       <table >
         <thead>
           <tr>
-            <th>ID</th>
             <th>Client Name</th>
             <th>Phone</th>
             <th>Interested In</th>
@@ -25,7 +24,6 @@ export default function Visits() {
         <tbody>
           {visits.map(visit => (
             <tr key={visit.ID} >
-              <td>{visit.ID}</td>
               <td>{visit.ClientName}</td>
               <td>{visit.Phone}</td>
               <td>{visit.InterestedIn}</td>

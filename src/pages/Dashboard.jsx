@@ -69,7 +69,6 @@ const Dashboard = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Client Name</th>
                         <th>Phone</th>
                         <th>Interested In</th>
@@ -78,7 +77,6 @@ const Dashboard = () => {
                 <tbody>
                     {followUps.slice(-5).map(followUp => (
                         <tr key={followUp.ID}>
-                            <td>{followUp.ID}</td>
                             <td>{followUp.ClientName}</td>
                             <td>{followUp.Phone}</td>
                             <td>{followUp.InterestedIn}</td>
@@ -91,7 +89,6 @@ const Dashboard = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Client Name</th>
                         <th>Phone</th>
                         <th>Interested In</th>
@@ -100,7 +97,6 @@ const Dashboard = () => {
                 <tbody>
                     {visits.slice(-5).map(visit => (
                         <tr key={visit.ID}>
-                            <td>{visit.ID}</td>
                             <td>{visit.ClientName}</td>
                             <td>{visit.Phone}</td>
                             <td>{visit.InterestedIn}</td>
