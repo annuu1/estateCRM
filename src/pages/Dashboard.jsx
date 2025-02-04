@@ -49,42 +49,44 @@ const Dashboard = () => {
             <h1>Dashboard</h1>
 
             {/* Follow-ups Group */}
+            <div><h3>Follow-Ups</h3></div>
             <div className={styles.cardsContainer}>
             <div className={styles.card}>
                     <p>{recommendedFollowups}</p>
-                    <h2>Recommended Follow-ups</h2>
+                    <h2>Recommended</h2>
                 </div>
                 <div className={styles.card}>
                     <p>{openFollowUps}</p>
-                    <h2>Open Follow-ups</h2>
+                    <h2>Open</h2>
                 </div>
                 <div className={styles.card}>
                     <p>{closedFollowUps}</p>
-                    <h2>Closed Follow-ups</h2>
+                    <h2>Closed</h2>
                 </div>
                 <div className={styles.card}>
                     <p>{totalFollowUps}</p>
-                    <h2>Total Follow-ups</h2>
+                    <h2>Total</h2>
                 </div>
             </div>
 
             {/* Visits Group */}
+            <div><h3>Visits</h3></div>
             <div className={styles.cardsContainer}>
                 <div className={styles.card}>
                     <p>{recommendedVisits}</p>
-                    <h2>Recommended Visits</h2>
+                    <h2>Recommended</h2>
                 </div>
                 <div className={styles.card}>
                     <p>{openVisits}</p>
-                    <h2>Open Visits</h2>
+                    <h2>Open</h2>
                 </div>
                 <div className={styles.card}>
                     <p>{closedVisits}</p>
-                    <h2>Closed Visits</h2>
+                    <h2>Closed</h2>
                 </div>
                 <div className={styles.card}>
                     <p>{totalVisits}</p>
-                    <h2>Total Visits</h2>
+                    <h2>Total</h2>
                 </div>
             </div>
             
