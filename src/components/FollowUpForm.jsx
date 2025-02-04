@@ -196,7 +196,7 @@ const FollowUpForm = () => {
         <button type="submit">Create Follow-up</button>
         
         {message && (
-          <div className={`message ${isError ? 'error' : 'success'}`}>
+          <div className={`${styles.success} ${styles.message}`}>
             {message}
           </div>
         )}
