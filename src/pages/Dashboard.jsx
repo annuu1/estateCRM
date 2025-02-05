@@ -6,6 +6,8 @@ import DataTable from "../components/DataTable"; // Importing the new DataTable 
 
 const Dashboard = () => {
     const { followUps, visits } = React.useContext(DataContext);
+    const [selectedData, setSelectedData] = useState([]);
+    const [dataType, setDataType] = useState('');
 
     // Calculate open and closed counts for follow-ups and visits   
     const today = new Date();
@@ -19,6 +21,23 @@ const Dashboard = () => {
     const totalVisits = visits.length;
     const recommendedVisits = visits.filter(f => new Date(f.ScheduledDate) <= today).length;
 
+    const handleCardClick = (type) => {
+        setDataType(type);
+        if (type === 'openFollowUps') {
+            setSelectedData(followUps.filter(f => f.Status === 'Open'));
+        } else if (type === 'closedFollowUps') {
+            setSelectedData(followUps.filter(f => f.Status === 'Closed'));
+        } else if (type === 'recommendedFollowUps') {
+            setSelectedData(followUps.filter(f => new Date(f.ScheduledDate) <= today));
+        } else if (type === 'openVisits') {
+            setSelectedData(visits.filter(v => v.Status === 'Open'));
+        } else if (type === 'closedVisits') {
+            setSelectedData(visits.filter(v => v.Status === 'Closed'));
+        } else if (type === 'recommendedVisits') {
+            setSelectedData(visits.filter(f => new Date(f.ScheduledDate) <= today));
+        }
+    };
+
     return (
         <div style={{ padding: '20px' }}>
             <h1>Dashboard</h1>
@@ -26,19 +45,19 @@ const Dashboard = () => {
             {/* Follow-ups Group */}
             <div><h3>Follow-Ups</h3></div>
             <div className={styles.cardsContainer}>
-                <div className={styles.card}>
+                <div className={styles.card} onClick={() => handleCardClick('recommendedFollowUps')}>
                     <p>{recommendedFollowups}</p>
                     <h2>Recommended</h2>
                 </div>
-                <div className={styles.card}>
+                <div className={styles.card} onClick={() => handleCardClick('openFollowUps')}>
                     <p>{openFollowUps}</p>
                     <h2>Open</h2>
                 </div>
-                <div className={styles.card}>
+                <div className={styles.card} onClick={() => handleCardClick('closedFollowUps')}>
                     <p>{closedFollowUps}</p>
                     <h2>Closed</h2>
                 </div>
-                <div className={styles.card}>
+                <div className={styles.card} onClick={() => handleCardClick('totalFollowUps')}>
                     <p>{totalFollowUps}</p>
                     <h2>Total</h2>
                 </div>
@@ -47,19 +66,19 @@ const Dashboard = () => {
             {/* Visits Group */}
             <div><h3>Visits</h3></div>
             <div className={styles.cardsContainer}>
-                <div className={styles.card}>
+                <div className={styles.card} onClick={() => handleCardClick('recommendedVisits')}>
                     <p>{recommendedVisits}</p>
                     <h2>Recommended</h2>
                 </div>
-                <div className={styles.card}>
+                <div className={styles.card} onClick={() => handleCardClick('openVisits')}>
                     <p>{openVisits}</p>
                     <h2>Open</h2>
                 </div>
-                <div className={styles.card}>
+                <div className={styles.card} onClick={() => handleCardClick('closedVisits')}>
                     <p>{closedVisits}</p>
                     <h2>Closed</h2>
                 </div>
-                <div className={styles.card}>
+                <div className={styles.card} onClick={() => handleCardClick('totalVisits')}>
                     <p>{totalVisits}</p>
                     <h2>Total</h2>
                 </div>
