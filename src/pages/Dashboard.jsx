@@ -151,7 +151,11 @@ const Dashboard = () => {
       ):
       (
         <div className={tableStyles.table}>
-            <button onClick={handleBackToDashboard}>Back to Dashboard</button>
+            <div className={styles.tableTitle}> 
+                <h4>{dataType.toUpperCase()}</h4>
+                <button className={styles.backBtn} onClick={handleBackToDashboard}>Back to Dashboard</button>
+            </div>
+            
             <DataTable
               headers={["Client Name", "Phone", "Interested In", "Note"]}
               keys={["ClientName", "Phone", "InterestedIn", "Note"]}
