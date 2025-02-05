@@ -63,10 +63,10 @@ const FollowUpForm = () => {
   };
 
   return (
-    <div className="form-container">
+    <div className={styles["form-container"]}>
       <h2>Create New Follow-up</h2>
       <form onSubmit={handleSubmit} action='get'>
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>
             Client Name*:
             <input
@@ -79,7 +79,7 @@ const FollowUpForm = () => {
           </label>
         </div>
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>
             Phone*:
             <input
@@ -92,7 +92,7 @@ const FollowUpForm = () => {
           </label>
         </div>
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>
             Interested In*:
             <input
@@ -105,7 +105,7 @@ const FollowUpForm = () => {
           </label>
         </div>
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>
             Note*:
             <textarea
@@ -117,7 +117,7 @@ const FollowUpForm = () => {
           </label>
         </div>
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>
             Scheduled Date*:
             <input
@@ -130,7 +130,7 @@ const FollowUpForm = () => {
           </label>
         </div>
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>
             Client Email:
             <input
@@ -142,7 +142,7 @@ const FollowUpForm = () => {
           </label>
         </div>
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>
             Broker ID:
             <input
@@ -154,7 +154,7 @@ const FollowUpForm = () => {
           </label>
         </div>
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>
             Property ID:
             <input
@@ -166,7 +166,7 @@ const FollowUpForm = () => {
           </label>
         </div>
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>
             Status:
             <select
@@ -181,7 +181,7 @@ const FollowUpForm = () => {
           </label>
         </div>
 
-        <div className="form-group">
+        <div className={styles["form-group"]}>
           <label>
             Host ID:
             <input
