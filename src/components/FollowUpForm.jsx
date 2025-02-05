@@ -193,7 +193,7 @@ const FollowUpForm = () => {
           </label>
         </div>
 
-        <button type="submit">Create Follow-up</button>
+        <button className={styles.submitBtn} type="submit">Create Follow-up</button>
         
         {message && (
           <div className={`${styles.success} ${styles.message}`}>
