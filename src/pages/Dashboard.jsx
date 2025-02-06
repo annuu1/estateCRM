@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import styles from "../assets/css/dashboard.module.css";
 import tableStyles from "../assets/css/table.module.css";
 import { DataContext } from "../context/DataContext";
-import DataTable from "../components/DataTable"; // Importing the new DataTable component
+import DataTable from "../components/DataTable";
 
 const Dashboard = () => {
-  const { followUps, visits } = React.useContext(DataContext);
+  const { followUps, visits, brokers } = React.useContext(DataContext);
   const [selectedData, setSelectedData] = useState([]);
   const [dataType, setDataType] = useState("");
   const [isDashboardVisible, setIsDashboardVisible] = useState(true);
+  const [tableHeaders, setTableHeaders] = useState(["Client Name", "Phone", "Interested In", "Note"]);
+  const [tableKeys, setTableKeys] = useState(["ClientName", "Phone", "InterestedIn", "Note"]);
 
 
   // Calculate open and closed counts for follow-ups and visits
@@ -48,7 +50,11 @@ const Dashboard = () => {
       setSelectedData(visits.filter((f) => new Date(f.ScheduledDate) <= today));
     } else if (type === 'totalVisits'){
         setSelectedData(visits)
-    }
+    } else if (type === 'brokers'){
+      setSelectedData(brokers)
+      setTableHeaders(['Name', 'Phone', 'Note'])
+      setTableKeys(['BrokerName', 'Phone', "Note"])
+  }
   };
 
   const handleBackToDashboard = () => {
@@ -134,6 +140,20 @@ const Dashboard = () => {
           </div>
         </div>
 
+        {/* {brokers group} */}
+        <div>
+          <h3>Property Agents</h3>
+        </div>
+        <div className={styles.cardsContainer}>
+          <div
+            className={styles.card}
+            onClick={() => handleCardClick("brokers")}
+          >
+            <p>{brokers.length}</p>
+            <h2>Total</h2>
+          </div>
+        </div>
+
         <h2>Follow Ups</h2>
         <DataTable
           headers={["Client Name", "Phone", "Interested In"]}
@@ -157,8 +177,8 @@ const Dashboard = () => {
             </div>
             
             <DataTable
-              headers={["Client Name", "Phone", "Interested In", "Note"]}
-              keys={["ClientName", "Phone", "InterestedIn", "Note"]}
+              headers={tableHeaders}
+              keys={tableKeys}
               data={selectedData}
             />
           </div>

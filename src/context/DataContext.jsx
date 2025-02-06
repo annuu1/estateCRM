@@ -5,6 +5,7 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
     const [followUps, setFollowUps] = useState([]);
     const [visits, setVisits] = useState([]);
+    const [brokers, setBrokers] = useState([]);
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbw-3OllPVzr8uLEYTOPIBn62tLJkCC_G6vE2hxsLdJHc3EXrbJ9uPESxq5zbUZemeaI9A/exec'
     const userID = 'USER123';
@@ -29,13 +30,23 @@ export const DataProvider = ({ children }) => {
                 console.error('Error fetching visits:', error);
             }
         };
+        const fetchBrokers = async () => {
+            try {
+                const response = await fetch(`${scriptURL}?action=getBrokers`);
+                const data = await response.json();
+                setBrokers(data);
+            } catch (error) {
+                console.error('Error fetching brokers:', error);
+            }
+        };
 
         fetchFollowUps();
         fetchVisits();
+        fetchBrokers()
     }, []);
 
     return (
-        <DataContext.Provider value={{ followUps, visits, scriptURL, userID }}>
+        <DataContext.Provider value={{ followUps, visits, brokers, scriptURL, userID }}>
             {children}
         </DataContext.Provider>
     );
