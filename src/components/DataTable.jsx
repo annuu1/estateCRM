@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaWhatsapp, FaPhone } from 'react-icons/fa'; // Importing icons
 import styles from '../assets/css/table.module.css';
 import { NavLink } from 'react-router-dom';
 
@@ -21,8 +22,12 @@ const DataTable = ({ headers, keys, data }) => {
                         ))}
 
                         <td>
-                            <NavLink to={`https://wa.me/${row.Phone}`} target='_blank'> Wa Send</NavLink>
-                            <NavLink to={`tel:${row.Phone}`} target='_blank'> Call</NavLink>
+                            <NavLink to={`https://wa.me/${row.Phone}`} target='_blank'>
+                                <FaWhatsapp style={{ marginRight: '10px', color: 'green', fontSize: '20px' }} />
+                            </NavLink>
+                            <NavLink to={`tel:${row.Phone}`} target='_blank'>
+                                <FaPhone style={{ marginLeft: '10px' , color: 'green', fontSize: '20px'}} />
+                            </NavLink>
                         </td>
                     </tr>
                 ))}
