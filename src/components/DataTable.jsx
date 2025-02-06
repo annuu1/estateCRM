@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../assets/css/table.module.css';
+import { NavLink } from 'react-router-dom';
 
 const DataTable = ({ headers, keys, data }) => {
     return (
@@ -9,6 +10,7 @@ const DataTable = ({ headers, keys, data }) => {
                     {headers.map((header, index) => (
                         <th key={index}>{header}</th>
                     ))}
+                        <th> Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,6 +19,11 @@ const DataTable = ({ headers, keys, data }) => {
                         {keys.map((key, cellIndex) => (
                             <td key={cellIndex}>{row[key]}</td>
                         ))}
+
+                        <td>
+                            <NavLink to={`https://wa.me/${row.Phone}`} target='_blank'> Wa Send</NavLink>
+                            <NavLink to={`tel:${row.Phone}`} target='_blank'> Call</NavLink>
+                        </td>
                     </tr>
                 ))}
             </tbody>
