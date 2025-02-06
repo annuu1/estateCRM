@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from '../assets/css/form.module.css';
+import { DataContext } from '../context/DataContext';
 
 const FollowUpForm = () => {
+  const {scriptURL} = useContext(DataContext);
+
   const [formData, setFormData] = useState({
     clientName: '',
     phone: '',
@@ -34,7 +37,7 @@ const FollowUpForm = () => {
     try {
       const params = new URLSearchParams(formData).toString();
         const response = await fetch(
-            `https://script.google.com/macros/s/AKfycbzQM23rERF5TSnEO4eYaOxWhEUQkxArrI0HXiBdRSBTALvArkFVsWlhzAdCWdJIh-zimw/exec?action=createVisit&${params}`,
+            `${scriptURL}?action=createVisit&${params}`,
           );
 
       const result = await response.json();            

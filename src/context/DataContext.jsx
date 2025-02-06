@@ -6,10 +6,13 @@ export const DataProvider = ({ children }) => {
     const [followUps, setFollowUps] = useState([]);
     const [visits, setVisits] = useState([]);
 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw-3OllPVzr8uLEYTOPIBn62tLJkCC_G6vE2hxsLdJHc3EXrbJ9uPESxq5zbUZemeaI9A/exec'
+    const userID = 'USER123';
+
     useEffect(() => {
         const fetchFollowUps = async () => {
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbz_ttqSToHOVk0Y8c1WVE1YkOA63YLHaRrS-YI_vklE7OpUiCNssHrN65TYSoEFEZ_Ujw/exec?action=getFollowups');
+                const response = await fetch(`${scriptURL}?action=getFollowups`);
                 const data = await response.json();
                 setFollowUps(data);
             } catch (error) {
@@ -19,7 +22,7 @@ export const DataProvider = ({ children }) => {
 
         const fetchVisits = async () => {
             try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbz_ttqSToHOVk0Y8c1WVE1YkOA63YLHaRrS-YI_vklE7OpUiCNssHrN65TYSoEFEZ_Ujw/exec?action=getVisits');
+                const response = await fetch(`${scriptURL}?action=getVisits`);
                 const data = await response.json();
                 setVisits(data);
             } catch (error) {
@@ -32,7 +35,7 @@ export const DataProvider = ({ children }) => {
     }, []);
 
     return (
-        <DataContext.Provider value={{ followUps, visits }}>
+        <DataContext.Provider value={{ followUps, visits, scriptURL, userID }}>
             {children}
         </DataContext.Provider>
     );
