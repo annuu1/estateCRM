@@ -156,8 +156,8 @@ const Dashboard = () => {
 
         <h2>Follow Ups</h2>
         <DataTable
-          headers={["Client Name", "Phone", "Interested In"]}
-          keys={["ClientName", "Phone", "InterestedIn"]}
+          headers={["Client Name", "Phone", "Interested In", "Note", 'Broker ID']}
+          keys={["ClientName", "Phone", "InterestedIn", "Note", "BrokerID"]}
           data={followUps.slice(-5)}
           createAction={'updateFollowup'}
           setData={setFollowUps}
@@ -165,8 +165,8 @@ const Dashboard = () => {
 
         <h2>Visits</h2>
         <DataTable
-          headers={["Client Name", "Phone", "Interested In"]}
-          keys={["ClientName", "Phone", "InterestedIn"]}
+          headers={["Client Name", "Phone", "Interested In", 'Note', 'Broker ID']}
+          keys={["ClientName", "Phone", "InterestedIn", 'Note', 'BrokerID']}
           data={visits.slice(-5)}
           createAction={'updateVisit'}
           setData={setVisits}
